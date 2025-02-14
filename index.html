@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #ff4d4d;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        #yes, #chat {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+        }
+        #no {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: black;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            border-radius: 15px;
+        }
+        #catImage {
+            display: none;
+            margin-top: 20px;
+            width: 200px;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #messageBox {
+            display: none;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #chat {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+        <button id="yes" onclick="acceptLove()">Yes</button>
+        <button id="no" onclick="declineLove()">No</button>
+    </div>
+    <img id="catImage" src="catImage" alt="Cute Cat">
+    
+    <div id="messageBox">
+        <p>Sometimes, words aren’t enough to express how truly special you are. You bring warmth to the coldest days and light up even the darkest moments. Your kindness, your laughter, and simply your presence make the world a better place. You deserve all the love, happiness, and appreciation in the world. No matter what happens, always remember that you are valued, cherished, and loved just the way you are. Thank you for being you—because the world wouldn’t be the same without you. ❤️</p>
+        <p>- Anonymous</p>
+    </div>
+    <button id="chat" onclick="chatWithMe()">Chat with me</button>
+    
+    <script>
+        let noTexts = ["Think again", "Are you sure?", "Last chance!", "Really?", "You're breaking my heart 💔", "I'm running out of patience 😠", "Fine... 😢"];
+        let catImages = ["cat1.img", "cat2.img", "cat3.img", "cat4.img", "cat5.img", "cat6.img", "cat7.img"];
+        let noClickCount = 0;
+        let yesButton = document.getElementById("yes");
+        let noButton = document.getElementById("no");
+        let catImage = document.getElementById("catImage");
+        let messageBox = document.getElementById("messageBox");
+        let chatButton = document.getElementById("chat");
+
+        function declineLove() {
+            if (noClickCount < noTexts.length) {
+                noButton.textContent = noTexts[noClickCount];
+            }
+            catImage.src = catImages[noClickCount % catImages.length];
+            catImage.style.display = "block";
+            yesButton.style.fontSize = (20 + noClickCount * 10) + "px";
+            
+            let maxX = window.innerWidth - noButton.offsetWidth;
+            let maxY = window.innerHeight - noButton.offsetHeight;
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+            noButton.style.left = ${randomX}px;
+            noButton.style.top = ${randomY}px;
+            
+            noClickCount++;
+        }
+        
+        function acceptLove() {
+            document.querySelector(".buttons").style.display = "none";
+            catImage.style.display = "none";
+            messageBox.style.display = "block";
+            chatButton.style.display = "block";
+        }
+        
+        function chatWithMe() {
+            window.location.href = "mailto:glitchbam@gmail.com";
+        }
+    </script>
+</body>
+</html>
