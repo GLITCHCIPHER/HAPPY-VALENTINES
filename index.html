@@ -88,23 +88,24 @@
         let messageBox = document.getElementById("messageBox");
         let chatButton = document.getElementById("chat");
 
-        function declineLove() {
-            if (noClickCount < noTexts.length) {
-                noButton.textContent = noTexts[noClickCount];
-            }
-            catImage.src = catImages[noClickCount % catImages.length];
-            catImage.style.display = "block";
-            yesButton.style.fontSize = (20 + noClickCount * 10) + "px";
-            
-            let maxX = window.innerWidth - noButton.offsetWidth;
-            let maxY = window.innerHeight - noButton.offsetHeight;
-            let randomX = Math.random() * maxX;
-            let randomY = Math.random() * maxY;
-            noButton.style.left = ${randomX}px;
-            noButton.style.top = ${randomY}px;
-            
-            noClickCount++;
-        }
+       function declineLove() {
+    if (noClickCount < noTexts.length) {
+        noButton.textContent = noTexts[noClickCount];
+    }
+    catImage.src = catImages[noClickCount % catImages.length];
+    catImage.style.display = "block";
+    yesButton.style.fontSize = (20 + noClickCount * 10) + "px";
+    
+    let maxX = window.innerWidth - noButton.offsetWidth;
+    let maxY = window.innerHeight - noButton.offsetHeight;
+    let randomX = Math.random() * maxX;
+    let randomY = Math.random() * maxY;
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+    
+    noClickCount++;
+}
+
         
         function acceptLove() {
             document.querySelector(".buttons").style.display = "none";
